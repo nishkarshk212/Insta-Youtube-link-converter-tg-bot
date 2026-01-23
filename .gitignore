@@ -1,0 +1,15 @@
+.env
+TELEGRAM_BOT_TOKEN.txt
+__pycache__/
+.DS_Store
+.venv/
+*.log
+*.mp3
+*.mp4
+*.m4a
+*.wav
+*.webm
+*.mkv
+*.ts
+*.mov
+*.aac

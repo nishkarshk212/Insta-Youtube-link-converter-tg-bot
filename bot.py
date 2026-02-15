@@ -313,11 +313,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
   • Use `/video` or `/audio` for specific format conversion
 
 ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ :- @Titanic_bots
-ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ  :-  @hacker\\_unity\\_212
+ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ  :-  @hacker_unity_212
 """
     
-    # Send the welcome message with formatting
-    await update.message.reply_text(welcome_message, parse_mode="Markdown")
+    # Create inline keyboard with group button
+    keyboard = [
+        [InlineKeyboardButton("👥 Join Our Group", url="https://t.me/Titanic_world_chatting_zonee")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    
+    # Send the welcome message with formatting and button
+    await update.message.reply_text(welcome_message, parse_mode="Markdown", reply_markup=reply_markup)
 
 async def download_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /download command with link argument"""

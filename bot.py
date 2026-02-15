@@ -5,11 +5,32 @@ import tempfile
 import uuid
 import pathlib
 import subprocess
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from typing import Optional
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputFile
 from telegram.constants import ChatAction
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler, ContextTypes, filters
 from yt_dlp import YoutubeDL
+
+# Health check server
+class HealthCheckHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        if self.path == '/health':
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b'Healthy')
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+def start_health_server():
+    try:
+        server = HTTPServer(('0.0.0.0', 10000), HealthCheckHandler)
+        server.serve_forever()
+    except Exception as e:
+        print(f"Health server error: {e}")
 
 def _get_token(name: str) -> Optional[str]:
     v = os.getenv(name)
@@ -612,6 +633,7 @@ def main() -> None:
         print("✅ Bot initialized successfully! Now listening for messages...")
         print("💬 Bot is ready to convert Instagram/YouTube links")
         print("🔧 Available commands: /start, /download, /video, /audio")
+        threading.Thread(target=start_health_server).start()
         app.run_polling()
     except Exception as e:
         print(f"❌ Error connecting to Telegram: {e}")

@@ -312,8 +312,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
   • Or use: `/download "link"` for direct conversion
   • Use `/video` or `/audio` for specific format conversion
 
-ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ :- @Titanic_bots
-ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ  :-  @hacker\_unity\_212
 """
     
     # Create inline keyboard with group button

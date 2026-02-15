@@ -292,7 +292,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
   • Use `/video` or `/audio` for specific format conversion
 
 ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ :- @Titanic_bots
-ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ  :-  @hacker_unity_212
+ᴊᴏɪɴ ᴍʏ ᴄʜᴀɴɴᴇʟ  :-  @hacker\\_unity\\_212
 """
     
     # Send the welcome message with formatting
